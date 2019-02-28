@@ -6,11 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    .blue{
+      background: blue;
+      height: 20px;
+    }
+  </style>
 </head>
 
 <body>
   <div id="dataApp">
     {{ date | formatDate}}
+    <span v-text="sad"></span>
+    <span v-html="sun"></span>
+    <div v-bind:class="className"></div>
+    <button v-on:click="count">{{countnum}}</button>
   </div>
 
   <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
@@ -21,7 +31,11 @@
     var app = new Vue({
       el: "#dataApp",
       data: {
-        date: new Date()
+        date: new Date(),
+        sad: 'sss',
+        sun: '<span style="color:red;">太阳</span>',
+        className: 'blue',
+        countnum:0,
       },
       filters: {
         formatDate: function (value) {
@@ -33,6 +47,11 @@
           var min = plusDate(date.getMinutes());
           var sec = plusDate(date.getSeconds());
           return year + '/' + month + '/' + day + '  ' + hours + ':' + min + ':' + sec
+        }
+      },
+      methods: {
+        count:function(){
+          this.countnum = this.countnum +1
         }
       },
       mounted: function () {
