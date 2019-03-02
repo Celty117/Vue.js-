@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>watch用法</title>
+</head>
+
+<body>
+  <div id="demo">
+    姓：{{firstName}} <br>
+    名：{{lastName}} <br>
+    全名：{{fullName}}
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#demo',
+      data: {
+        firstName: 'lao',
+        lastName: 'wang',
+        fullName: 'lao wang',
+      },
+      watch: {
+        firstName: function (val) {
+          this.fullName = val + ' ' + this.lastName
+        },
+        lastName: function (val) {
+          this.fullName = this.firstName + ' ' + val
+        },
+      },
+    })
+  </script>
+</body>
+
+</html>
