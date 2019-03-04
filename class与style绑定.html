@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>class与style绑定</title>
+  <style>
+    .divStyle{
+      background-color: yellow;
+    }
+    .borderStyle{
+      border: 5px solid blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="demo">
+    v-bind变量语法: <br>
+    <a v-bind:href="url">url</a>
+    <img :src="imgUrl" alt=""> <hr>
+    v-bind绑定class对象语法:对象的键是类名，值是布尔值 <br>
+    <div v-bind:class="{divStyle:isActive,borderStyle:isActive}">对象快点变黄</div>
+    <hr>
+    绑定class数组语法：<br>
+    <div :class="[activeClass,errorClass]">数组快点变黄</div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    var app = new Vue({
+      el:"#demo",
+      data:{
+        url:'https://www.baidu.com',
+        imgUrl:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=710534922,2230517266&fm=173&app=49&f=JPEG?w=640&h=467&s=F716738C6A70168EC095690203007093',
+        isActive:true,
+        activeClass:'divStyle',
+        errorClass:'borderStyle',
+      },
+    })
+  </script>
+</body>
+
+</html>
