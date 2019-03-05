@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>条件渲染指令</title>
+</head>
+
+<body>
+  <div id="app">
+    v-if后面接的是等号，等号后的内容必须是布尔值。 <br>
+    <p v-if="6<2">{{apple}}</p>
+    <p v-else-if="9>3">{{orange}}</p>
+    <p v-else>{{banana}}</p>
+    <hr>
+    v-if实例用法：加key，唯一，提供key值可以来决定是否复用该元素
+    需求：点击按钮，实现用户名输入框和密码输入框的切换
+    <div v-if="type ==='name'">
+      用户名：<input type="text" placeholder="请输入用户名" key="name">
+    </div>
+    <div v-else>
+      密码：<input type="password" placeholder="请输入密码" key="password">
+    </div>
+    <button v-on:click="change">切换</button>
+    <hr>
+    v-show：显现与否看布尔值
+    <p v-show="9>a">被渲染</p>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        apple: 'apples',
+        banane: 'bananas',
+        orange: 'oranges',
+        type: 'name',
+        a:3,
+      },
+      methods: {
+        change: function () {
+          this.type = (this.type === 'name' ? 'password' : 'name')
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
