@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-for指令</title>
+</head>
+
+<body>
+  <div id="app">
+    v-for用法：v-for一定写在要遍历的元素上，v-for后面接等号 <br>
+    1.遍历多个对象：<br>
+    学习方法：
+    <ul>
+      <li v-for="vueMth in vueMethods">{{vueMth.name}}</li>
+    </ul>
+    带索引的写法：
+    <ul>
+      <li v-for="(vueMth, index) in vueMethods">{{index}}{{vueMth.name}}</li>
+    </ul>
+    <hr>
+    2.遍历一个对象的多个属性：
+    <span v-for="value in pc">{{value}}</span> <hr>
+    拿到value,key,index的方法：
+    <span v-for="(value,key,index) in pc">第{{index}}个--{{key}}--{{value}}</span>
+
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        // 每个对象对应一个li
+        vueMethods: [
+          { name: '多思考' },
+          { name: '多练习' },
+          { name: '多听课' },
+        ],
+        pc: {
+          part1: 'cpu',
+          part2: 'driver',
+          part3: 'ram',
+        },
+      },
+    })
+  </script>
+</body>
+
+</html>
