@@ -49,6 +49,24 @@
       <option value="内存">内存</option>
     </select><br>
     现在选中的是{{selectedmul}} <br>
+    <hr>
+    绑定值： <br>
+    单选按钮：
+    <input type="radio" v-model="picked" v-bind:value="vl"> -----{{picked}} <br>
+    复选框：
+    <input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2">
+    <br>{{toggle}} <br>
+    {{toggle==value1}} <br>
+    {{toggle==value2}}
+    <hr>
+    单选的下拉框：
+    <select v-model="valueselected">
+      <option value="cpu" :value="{num:123}">cpu</option>
+      <option value="显卡">显卡</option>
+      <option value="内存">内存</option>
+    </select><br>
+    现在选中的是{{valueselected}} -- {{valueselected.num}} <br>
+
   </div>
 
   <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
@@ -62,7 +80,13 @@
         checkname: '',
         checks: [],
         selected: '', //也可以为数组[]
-        selectedmul:'',
+        selectedmul: '',
+        picked: true,
+        vl: 'keyi',
+        toggle: true,
+        value1:'我被选中了',
+        value2:'我没有被选',
+        valueselected:'',
       },
     })
   </script>
