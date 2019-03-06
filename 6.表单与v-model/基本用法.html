@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>基本用法</title>
+</head>
+
+<body>
+  <div id="app">
+    v-model的用法： <br>
+    <input type="text" v-model="values"> <br>
+    {{values}}
+    <br>
+    <textarea name="" id="" cols="30" rows="10" v-model="msg">我是初始化的文字</textarea> <br>
+    {{msg}}
+    <hr>
+    单选框： <br>
+    <input type="radio" name="" v-bind:checked="oneradio"> <br>
+    多个单选框：<br>
+    老大：<input type="radio" name="checks" value="老大" v-model="checkname"> <br>
+    老二：<input type="radio" name="checks" value="老二" v-model="checkname"> <br>
+    老五：<input type="radio" name="checks" value="老五" v-model="checkname"> <br>
+    现在选中的是{{checkname}}
+    <hr>
+    复选框：
+    单个复选框，用v-bind：<input type="checkbox" v-bind:checked="oneradio"> <br>
+    单个复选框，用v-model：<input type="checkbox" v-model="oneradio">
+    <br>
+    多个复选框：
+    猫：<input type="checkbox" value="猫" v-model="checks">
+    狗：<input type="checkbox" value="狗" v-model="checks">
+    羊：<input type="checkbox" value="羊" v-model="checks">
+    <br>现在选中的是{{checks}}
+    <hr>
+    单选的下拉框：
+    <select v-model="selected">
+      <option value="cpu">cpu</option>
+      <option value="显卡">显卡</option>
+      <option value="内存">内存</option>
+    </select><br>
+    现在选中的是{{selected}} <br>
+    多选的下拉框：
+    <select v-model="selectedmul" multiple>
+      <option value="cpu">cpu</option>
+      <option value="显卡">显卡</option>
+      <option value="内存">内存</option>
+    </select><br>
+    现在选中的是{{selectedmul}} <br>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        values: '',
+        msg: '',
+        oneradio: true,
+        checkname: '',
+        checks: [],
+        selected: '', //也可以为数组[]
+        selectedmul:'',
+      },
+    })
+  </script>
+</body>
+
+</html>
