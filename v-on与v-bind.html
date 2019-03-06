@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .activeClass {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="demo">
+    <div class="aClass"></div>
+    <div v-bind:class="{activeClass:active}">{{msg}}</div> <br>
+    <button v-on:click="handle">点击变色</button>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#demo',
+      data: {
+        msg: '等着变色23333',
+        active: true,
+      },
+      methods: {
+        handle: function () {
+          console.log(this.active)
+          this.active = !this.active
+        },
+      },
+    })
+  </script>
+</body>
+
+</html>
