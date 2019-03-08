@@ -11,6 +11,9 @@
 <body>
   <div id="app">
     <app-component></app-component>
+    <appComponent></appComponent>
+    <btn-component></btn-component>
+    <btn-component></btn-component>
   </div>
   <div id="bpp">
     <app-component></app-component>
@@ -24,7 +27,18 @@
       el:'#app',
       components:{
         'app-component':{
-          template:'<div>我是app的一个组件</div>'
+          template:'<div>我是app局部注册的一个组件</div>' //最好用小横杠
+        },
+        'appComponent':{
+          template:'<div>我是app局部注册的第二个组件</div>' //驼峰命名没有用
+        },
+        'btn-component':{
+          template:'<button @click="count++">{{count}}</button>',
+          data:function(){  //data必须是个函数
+            return{
+              count:0
+            }
+          }
         }
       },
       data:{
