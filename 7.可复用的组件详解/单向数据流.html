@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>单向数据流</title>
+</head>
+
+<body>
+  <div id="app">
+    <!--保存初始值-->
+    <my-component msg="我是父组件传递的数据"></my-component>
+    <hr>
+    <!--通过input中输入的数据直接改变div的宽度-->
+    <input type="text" v-model="width">
+    <width-component :width1="width"></width-component> <!--width1通过组件width-component中的props接口传输-->
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    Vue.component('my-component', {
+      props: ['msg'],
+      template: '<div>{{msg}}</div>',
+      data: function () {
+        return {
+          count: this.msg  //父组件传递初始值进来，子组件将它作为初始值保存起来，在自己的作用域下可以随意使用和修改。
+          //这种情况可以在组件 data 内再声明一个数据，引用父组件的 prop
+        }
+      }
+    })
+    Vue.component('width-component', {
+      props: ['width1'],
+      template: '<div :style="styles"></div>',  // styles就是计算属性中的styles,可以像data那样直接拿到
+      computed: {
+        styles:function(){
+          return{
+            width:this.width1+'px', //this.width1就是props接口拿到的父组件app data中的width的值
+            backgroundColor:'red',
+            height:'30px',
+          }
+        }
+      },
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        width:0,
+      },
+    })
+  </script>
+</body>
+
+</html>
