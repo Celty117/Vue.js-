@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>子组件向父组件通信</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>余额为{{total}}元</p>
+    <son-component @change="handleTotal"></son-component>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    Vue.component('son-component', {
+      template: '<div>\
+                <button @click="handleincrease">+1000</button> \
+                <button @click="handlereduce">-1000</button>\
+                </div>',
+      data: function () {
+        return {
+          count: 2000,
+        }
+      },
+      methods: {
+        handleincrease: function () {
+          this.count = this.count + 1000;
+          this.$emit('change',this.count);
+        },
+        handlereduce: function () {
+          this.count = this.count - 1000;
+          this.$emit('change',this.count);
+        },
+      },
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        total: 2000,
+      },
+      methods:{
+        handleTotal:function(value){ //此处的value形参就是传递过来的数据（上面this.count）
+          this.total = value
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
