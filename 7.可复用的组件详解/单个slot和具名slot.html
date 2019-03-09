@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slot</title>
+</head>
+
+<body>
+  <div id="app">
+    <name-component>
+      <h3 slot="header">我是标题</h3>
+      <p>我是正文内容</p>
+      <p>正文内容有两段</p>
+      <p slot="footer">我是底部信息</p>
+    </name-component>
+
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    Vue.component('name-component', {
+      template: '<div>\
+        <div class="header">\n' +
+        ' <slot name="header">\n' +
+        ' \n' +
+        ' </slot>\n' +
+        '</div>\n' +
+        '<div class="contatiner">\n' +
+        ' <slot>\n' +
+        ' \n' +
+        ' </slot>\n' +
+        '</div>\n' +
+        '<div class="footer">\n' +
+        ' <slot name="footer">\n' +
+        '\n' +
+        ' </slot> \n' +
+        '</div>' +
+        ' </div>'
+    })
+
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>
