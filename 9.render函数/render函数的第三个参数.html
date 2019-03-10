@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>render函数的第三个参数</title>
+</head>
+
+<body>
+  <div id="app">
+    <child></child>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    Vue.component('child', {
+      //第三个参数可选,可以是 String | Array --- 代表子节点
+      render: function (createElement) {
+        return createElement('div',[
+          createElement('h1','我是h1'),
+          createElement('h6','我是h6'),
+        ])
+      },
+    });
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>
