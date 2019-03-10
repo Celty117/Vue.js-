@@ -22,9 +22,15 @@
   <script>
     Vue.component('my-component', {
       render: function(createElement){
-        var header = this.$slots.header;
-        var footer = this.$slots.footer;
-        return createElement
+        
+        var header1 = this.$slots.header;
+        var main1 = this.$slots.default;
+        var footer1 = this.$slots.footer;
+        return createElement('div',[  //第三个参数存的是VNODE,虚拟节点
+          createElement('header',header1),
+          createElement('main',main1),
+          createElement('footer',footer1)
+        ])
       }
     })
 
