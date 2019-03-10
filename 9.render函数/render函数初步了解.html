@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>render函数初步了解</title>
+</head>
+
+<body>
+  <div id="app">
+    <child :levels="level">
+      标题的大小
+    </child>
+  </div>
+
+  <!-- <template id="hdom">
+    <div>
+      <h1 v-if="levels ==1">
+        <slot></slot>
+      </h1>
+      <h2 v-if="levels ==2">
+        <slot></slot>
+      </h2>
+      <h3 v-if="levels ==3">
+        <slot></slot>
+      </h3>
+    </div>
+  </template> -->
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    // 是用vue组件定义
+    // Vue.component('child', {
+    //   props: ['levels'],
+    //   template: '#hdom',
+    // })
+
+    // 使用render函数进行定义组件
+    Vue.component('child', {
+      render: function (createElement) {
+        return createElement('h'+this.levels,
+        this.$slots.default);
+      },
+      props:['levels'],
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        level: 3,
+      }
+    })
+  </script>
+</body>
+
+</html>
