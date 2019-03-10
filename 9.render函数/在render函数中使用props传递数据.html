@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>在render函数中使用props传递数据</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="switchShow">点击切换</button> {{show}}
+    <my-component :shows="show">
+
+    </my-component>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    // 需求：点击按钮切换图片
+    Vue.component('my-component', {
+      props:['shows'],
+      render(createElement) {
+        var imgsrc;
+        if(this.shows){
+          imgsrc = '../img/mayi.jpg'
+        }else{
+          imgsrc = '../img/mayi2.jpg'
+        }
+        return createElement('img',{
+          attrs:{
+            src:imgsrc
+          },
+          style:{
+            width:'200px',
+            height:'200px',
+          }
+        })
+      },
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        show: false,
+      },
+      methods: {
+        switchShow() {
+          this.show = !this.show
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
