@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>render函数的第一个参数</title>
+</head>
+
+<body>
+  <div id="app">
+    <child></child>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+  <script>
+    Vue.component('child', {
+      //第一个参数必选
+      //String -- html标签
+      //Object -- 一个含有数据选项的对象
+      //Function -- 方法返回含有数据选项的对象
+      render(createElement) {
+        // return createElement('div')
+
+        // return createElement({
+        //   template:'<div>抬头明月光</div>'
+        // })
+
+        var domFun = function () {
+          return {
+            template:'<div>抬头明月光</div>'
+          }
+        }
+        return createElement(domFun())
+      },
+    });
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>
