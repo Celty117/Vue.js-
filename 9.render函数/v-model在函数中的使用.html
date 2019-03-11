@@ -10,7 +10,8 @@
 
 <body>
   <div id="app">
-    <my-component :names="name" @input="showName"></my-component>
+    <!-- <my-component :names="name" @input="showName"></my-component> -->
+    <my-component :names="name" v-model="name"></my-component>
     <br> {{name}}
   </div>
 
@@ -39,11 +40,11 @@
       data: {
         name: 'colin',
       },
-      methods: {
-        showName:function(value){
-          this.name = value
-        }
-      },
+      // methods: {
+      //   showName:function(value){
+      //     this.name = value
+      //   }
+      // },
     })
   </script>
 </body>
