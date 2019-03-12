@@ -1,15 +1,15 @@
 <template>
   <div class="hello">
-    <h1>Hello World</h1>
+    <h1>Hello Earth</h1>
     <h2>Essential Links</h2>
-    <h3>{{$route.params.worldmsg}}</h3>
+    <h3>{{$route.params.earthmsg}}</h3>
     <hr>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "HelloEarth",
   data() {
     return {};
   }
@@ -19,6 +19,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 * {
-  color: #42b983;
+  color: chocolate;
 }
 </style>
