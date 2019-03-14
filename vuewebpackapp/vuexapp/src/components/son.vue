@@ -4,7 +4,9 @@
       我是子组件
     </span>---{{msg}} <br>
     我是子组件拿到的全局状态：{{getNum}}
-    <button @click="sendMsgToFa">点击</button>
+    <button @click="sendMsgToFa">点击</button> <br>
+    <button @click="sadd">子组件---改变状态按钮</button>
+    <button @click="saddaction">子组件---改变状态按钮（action）</button>
   </div>
 </template>
 
@@ -25,7 +27,13 @@ export default {
   methods:{
     sendMsgToFa(){
       this.$emit('handle',this.ToFatherMsg)
-    }
+    },
+    sadd(){
+      this.$store.commit('increase');
+    },
+    saddaction(){
+      this.$store.dispatch('decreaseAction')
+    },
   },
   computed: {
     getNum(){
